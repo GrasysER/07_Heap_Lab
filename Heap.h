@@ -46,7 +46,8 @@ private:
 	void trickleDown(unsigned long index);
 };
 
-
+//Code from OpenData Structures
+//Basic format of bubbleUp and trickleDown from StackOverFlow
 
 #include <string>
 
@@ -64,10 +65,10 @@ Heap<Pri, T>::~Heap(){
 
 template<class Pri, class T>
 void Heap<Pri, T>::grow(){
-	T* biggerArray = new std::pair<Pri, T>[arrSize * 2];
+	std::pair<Pri, T> *biggerArray = new std::pair<Pri, T>[arrSize * 2];
 
 	//copy over old values
-	for (unsigned int i = 0; i < numItems; i++){
+	for (int i = 0; i < numItems; i++){
 		biggerArray[i] = backingArray[i];
 	}
 
@@ -100,34 +101,21 @@ void Heap<Pri, T>::bubbleUp(unsigned long index){
 
 template<class Pri, class T>
 void Heap<Pri, T>::trickleDown(unsigned long index){
-	do{
+	do {
 		int test = -1;
+		int left = 2 * index + 1;
+		int right = 2 * index + 2;
 
-		unsigned long right = 2 * index + 2;
-		unsigned long left = 2 * index + 1
-
-			if (right < numItems && backingArray[right] < backingArray[index]){
-			if (backingArray[left] < backingArray[right]){
+		if (backingArray[index] > backingArray[left] || backingArray[index] > backingArray[right]) {
+			if (backingArray[left] < backingArray[right])
 				test = left;
-			}
-			else {
+			else
 				test = right;
-			}
-			}
-			else {
-				unsigned long left = 2 * index + 1
-					if (left < numItems && backingArray[left] < backingArray[index]) {
-					test = left;
-					}
-			}
-			if (test >= 0){
-				std::pair<Pri, T> temp;
-				temp = backingArray[index];
-				backingArray[index] = backingArray[test];
-				backingArray[test] = temp;
-			}
-			index = test;
+		}
 
+		if (test >= 0)
+			backingArray[index].swap(backingArray[test]);
+		index = test;
 
 	} while (index <= 0);
 }
