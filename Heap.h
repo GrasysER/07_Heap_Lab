@@ -85,8 +85,8 @@ void Heap<Pri, T>::add(std::pair<Pri, T> toAdd){
 	}
 
 	numItems++;
-	backingArray[numItems] = toAdd;
-	bubbleUp(numItems);
+	backingArray[numItems-1] = toAdd;
+	bubbleUp(numItems-1);
 }
 
 template<class Pri, class T>
