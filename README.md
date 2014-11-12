@@ -24,14 +24,19 @@ Questions
 #### 2. Exercises 10.1 and 10.2 from http://opendatastructures.org/ods-cpp/10_3_Discussion_Exercises.html
 10.1: 
 Add 7 to an open spot(bottom right), bubble up to the correct spot by switching with 16.
+
 Add 3 to an open spot(bottom right), bubble up to the correct spot by switching with 7, 6, and finally 4.
 
 10.2:
 Switch 6 with largest number(bottom right, 55) and remove it, trickle down 55 to the correct spot by switching 55 with 8 then 50.
+
 Switch 8 with largest number(bottom right, 93) and remove it, trickle down 93 to the correct spot by switching 93 with 9, 26, and 32.
+
 #### 3. Exercise 10.4 from http://opendatastructures.org/ods-cpp/10_3_Discussion_Exercises.html
 Parent: (i-1)/2
+
 Left child: 2*1+1
+
 Right child: 2*i+2
 
 #### 4. What is one question that confused you about this exercise, or one piece of advice you would share with students next semester?
