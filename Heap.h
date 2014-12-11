@@ -72,8 +72,8 @@ void Heap<Pri, T>::grow(){
 		biggerArray[i] = backingArray[i];
 	}
 
-	backingArray = biggerArray;
 	delete[] biggerArray;
+	backingArray = biggerArray;
 	arrSize = (arrSize * 2);
 }
 
@@ -84,9 +84,9 @@ void Heap<Pri, T>::add(std::pair<Pri, T> toAdd){
 		grow();
 	}
 
+	backingArray[numItems] = toAdd;
+	bubbleUp(numItems);
 	numItems++;
-	backingArray[numItems-1] = toAdd;
-	bubbleUp(numItems-1);
 }
 
 template<class Pri, class T>
@@ -105,6 +105,7 @@ void Heap<Pri, T>::trickleDown(unsigned long index){
 		int test = -1;
 		int left = 2 * index + 1;
 		int right = 2 * index + 2;
+
 
 		if (backingArray[index] > backingArray[left] || backingArray[index] > backingArray[right]) {
 			if (backingArray[left] < backingArray[right])
@@ -129,7 +130,7 @@ std::pair<Pri, T> Heap<Pri, T>::remove(){
 	numItems--;
 
 	std::pair<Pri, T> temp = backingArray[0];
-	backingArray[0] = backingArray[numItems - 1];
+	backingArray[0] = backingArray[numItems];
 	trickleDown(0);
 	return temp;
 }
